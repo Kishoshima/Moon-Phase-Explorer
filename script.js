@@ -38,7 +38,6 @@ window.showMoonPhase = async function showMoonPhase() {
   }
 
   document.getElementById('result').innerHTML = `
-    <div class="moon-emoji">${phaseData.emoji}</div>
     <h2>${phaseData.name} — ${date.toUTCString().split(' ').slice(0, 4).join(' ')}</h2>
     <img src="${phaseData.image}" alt="Moon phase" style="max-width:300px; border-radius: 8px;"><br><br>
     ${eventsHTML}
