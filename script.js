@@ -1,6 +1,7 @@
 alert("script.js is loading correctly.");
 
 window.showMoonPhase = async function showMoonPhase() {
+  alert("showMoonPhase() fired!");
   const dateInput = document.getElementById('moonDate').value;
   if (!dateInput) return;
 
