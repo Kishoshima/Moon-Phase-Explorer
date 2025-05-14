@@ -59,7 +59,7 @@ function getMoonPhaseData(phase) {
     { max: 16.61096, name: "Full Moon", emoji: "🌕", image: "images/Full Moon.jpg" },
     { max: 20.30228, name: "Waning Gibbous", emoji: "🌖", image: "images/Waning Gibbous.jpg" },
     { max: 23.99361, name: "Last Quarter", emoji: "🌗", image: "images/Last Quarter.jpg" },
-    { max: 27.68493, name: "Waning Crescent", emoji: "🌘", image: "images/Waining Crescent.jpg" },
+    { max: 27.68493, name: "Waning Crescent", emoji: "🌘", image: "images/Waning Crescent.jpg" },
     { max: 29.53059, name: "New Moon", emoji: "🌑", image: "images/New Moon.jpg" }
   ];
   return phases.find(p => phase < p.max);
