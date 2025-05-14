@@ -20,15 +20,15 @@ async function fetchWikiImage(title) {
 
 function getMoonPhaseData(phase) {
   const phases = [
-    { max: 1.84566, name: "New Moon", emoji: "🌑", image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/phase_00_newmoon.jpg" },
-    { max: 5.53699, name: "Waxing Crescent", emoji: "🌒", image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/phase_01_waxingcrescent.jpg" },
-    { max: 9.22831, name: "First Quarter", emoji: "🌓", image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/phase_02_firstquarter.jpg" },
-    { max: 12.91963, name: "Waxing Gibbous", emoji: "🌔", image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/phase_03_waxinggibbous.jpg" },
-    { max: 16.61096, name: "Full Moon", emoji: "🌕", image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/phase_04_fullmoon.jpg" },
-    { max: 20.30228, name: "Waning Gibbous", emoji: "🌖", image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/phase_05_waninggibbous.jpg" },
-    { max: 23.99361, name: "Last Quarter", emoji: "🌗", image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/phase_06_lastquarter.jpg" },
-    { max: 27.68493, name: "Waning Crescent", emoji: "🌘", image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/phase_07_waningcrescent.jpg" },
-    { max: 29.53059, name: "New Moon", emoji: "🌑", image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004768/phase_00_newmoon.jpg" }
+    { max: 1.84566, name: "New Moon", emoji: "🌑", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/FullMoon2010.jpg" },
+    { max: 5.53699, name: "Waxing Crescent", emoji: "🌒", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Moon_phase_Waxing_Crescent.svg/512px-Moon_phase_Waxing_Crescent.svg.png" },
+    { max: 9.22831, name: "First Quarter", emoji: "🌓", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Moon_phase_first_quarter.svg/512px-Moon_phase_first_quarter.svg.png" },
+    { max: 12.91963, name: "Waxing Gibbous", emoji: "🌔", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Moon_phase_Waxing_Gibbous.svg/512px-Moon_phase_Waxing_Gibbous.svg.png" },
+    { max: 16.61096, name: "Full Moon", emoji: "🌕", image: "https://upload.wikimedia.org/wikipedia/commons/e/e0/FullMoon2010.jpg" },
+    { max: 20.30228, name: "Waning Gibbous", emoji: "🌖", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Moon_phase_Waning_Gibbous.svg/512px-Moon_phase_Waning_Gibbous.svg.png" },
+    { max: 23.99361, name: "Last Quarter", emoji: "🌗", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Moon_phase_last_quarter.svg/512px-Moon_phase_last_quarter.svg.png" },
+    { max: 27.68493, name: "Waning Crescent", emoji: "🌘", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Moon_phase_Waning_Crescent.svg/512px-Moon_phase_Waning_Crescent.svg.png" },
+    { max: 29.53059, name: "New Moon", emoji: "🌑", image: "https://upload.wikimedia.org/wikipedia/commons/0/09/New_Moon.jpg" }
   ];
   return phases.find(p => phase < p.max);
 }
@@ -37,7 +37,8 @@ async function showMoonPhase() {
   const dateInput = document.getElementById('moonDate').value;
   if (!dateInput) return;
 
-  const date = new Date(dateInput);
+  const [year, month, day] = dateInput.split('-').map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
   const jd = Math.floor((date / 86400000) + 2440587.5);
   const daysSinceNew = jd - 2451550.1;
   const newMoons = daysSinceNew / 29.53058867;
