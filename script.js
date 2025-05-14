@@ -53,15 +53,15 @@ function toJulianDate(date) {
 
 function getMoonPhaseData(phase) {
   const phases = [
-    { max: 1.84566, name: "New Moon", emoji: "🌑", image: "images/New Moon.jpg" },
-    { max: 5.53699, name: "Waxing Crescent", emoji: "🌒", image: "images/Waxing Crescent.jpg" },
-    { max: 9.22831, name: "First Quarter", emoji: "🌓", image: "images/First Quarter.jpg" },
-    { max: 12.91963, name: "Waxing Gibbous", emoji: "🌔", image: "images/Waxing Gibbous.jpg" },
-    { max: 16.61096, name: "Full Moon", emoji: "🌕", image: "images/Full Moon.jpg" },
-    { max: 20.30228, name: "Waning Gibbous", emoji: "🌖", image: "images/Waning Gibbous.jpg" },
-    { max: 23.99361, name: "Last Quarter", emoji: "🌗", image: "images/Last Quarter.jpg" },
-    { max: 27.68493, name: "Waning Crescent", emoji: "🌘", image: "images/Waning Crescent.jpg" },
-    { max: 29.53059, name: "New Moon", emoji: "🌑", image: "images/New Moon.jpg" }
+    { max: 1.84566, name: "New Moon", image: "images/New Moon.jpg" },
+    { max: 5.53699, name: "Waxing Crescent", image: "images/Waxing Crescent.jpg" },
+    { max: 9.22831, name: "First Quarter",  image: "images/First Quarter.jpg" },
+    { max: 12.91963, name: "Waxing Gibbous", image: "images/Waxing Gibbous.jpg" },
+    { max: 16.61096, name: "Full Moon", image: "images/Full Moon.jpg" },
+    { max: 20.30228, name: "Waning Gibbous", image: "images/Waning Gibbous.jpg" },
+    { max: 23.99361, name: "Last Quarter", image: "images/Last Quarter.jpg" },
+    { max: 27.68493, name: "Waning Crescent", image: "images/Waning Crescent.jpg" },
+    { max: 29.53059, name: "New Moon", image: "images/New Moon.jpg" }
   ];
   return phases.find(p => phase < p.max);
 }
