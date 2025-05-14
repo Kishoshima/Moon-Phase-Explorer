@@ -1,7 +1,5 @@
-alert("script.js is loading correctly.");
-
+// --- Main Function (globally bound for button access)
 window.showMoonPhase = async function showMoonPhase() {
-  alert("showMoonPhase() fired!");
   const dateInput = document.getElementById('moonDate').value;
   if (!dateInput) return;
 
@@ -47,7 +45,8 @@ window.showMoonPhase = async function showMoonPhase() {
   `;
 };
 
-// --- Supporting functions (must stay outside the above)
+// --- Helper Functions
+
 function toJulianDate(date) {
   return (date.getTime() / 86400000) + 2440587.5;
 }
@@ -65,4 +64,24 @@ function getMoonPhaseData(phase) {
     { max: 29.53059, name: "New Moon", emoji: "🌑", image: "images/New Moon.jpg" }
   ];
   return phases.find(p => phase < p.max);
+}
+
+async function fetchHistoricalEvents(month, day) {
+  const url = `https://byabbe.se/on-this-day/${month}/${day}/events.json`;
+  const response = await fetch(url);
+  if (!response.ok) return [];
+  const data = await response.json();
+  return data.events.slice(0, 15);
+}
+
+async function fetchWikiImage(title) {
+  const searchUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
+  try {
+    const res = await fetch(searchUrl);
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json.thumbnail?.source || null;
+  } catch {
+    return null;
+  }
 }
