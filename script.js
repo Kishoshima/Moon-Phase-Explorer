@@ -1,4 +1,5 @@
-// Attach to global scope so button can access it
+alert("script.js is loading correctly.");
+
 window.showMoonPhase = async function showMoonPhase() {
   const dateInput = document.getElementById('moonDate').value;
   if (!dateInput) return;
