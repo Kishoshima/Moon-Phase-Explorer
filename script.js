@@ -39,7 +39,7 @@ async function showMoonPhase() {
 
   const [year, month, day] = dateInput.split('-').map(Number);
   const date = new Date(Date.UTC(year, month - 1, day));
-  const jd = Math.floor((date / 86400000) + 2440587.5);
+  const jd = toJulianDate(date);
   const daysSinceNew = jd - 2451550.1;
   const newMoons = daysSinceNew / 29.53058867;
   const phase = (newMoons - Math.floor(newMoons)) * 29.53058867;
