@@ -3,18 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Moon Phase Explorer 🌙</title>
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Page Header -->
   <h1>🌙 Moon Phase Explorer</h1>
   <p>Select your birth date to see the moon phase and what happened that day!</p>
-  <input type="date" id="moonDate">
-  <br>
-  <button onclick="showMoonPhase()">Find Phase</button>
+
+  <!-- Date Picker & Buttons -->
+  <input type="date" id="moonDate"><br>
+  <button id="findBtn">Find Phase</button>
   <button onclick="window.print()">🖨️ Print Page</button>
 
+  <!-- Loading Indicator -->
+  <p id="loadingMessage" style="display: none; font-style: italic; color: #ffe600;">Working…</p>
+
+  <!-- Results Display -->
   <div id="result"></div>
 
-  <script src="script.js"></script>
+  <!-- JavaScript (with cache busting and defer) -->
+  <script src="script.js?v=1.0" defer></script>
 </body>
 </html>

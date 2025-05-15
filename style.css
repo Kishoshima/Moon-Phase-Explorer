@@ -1,3 +1,6 @@
+/* -----------------------------------
+   GENERAL STYLES
+----------------------------------- */
 body {
   font-family: 'Segoe UI', sans-serif;
   background: url('RKCSbg.png') no-repeat center center fixed;
@@ -8,12 +11,23 @@ body {
   padding: 2em;
 }
 
+/* -----------------------------------
+   HEADINGS
+----------------------------------- */
 h1 {
   font-size: 2em;
   color: #ffe600;
   text-shadow: 2px 2px #000;
 }
 
+h2 {
+  color: #ffe600;
+  margin-top: 1em;
+}
+
+/* -----------------------------------
+   FORM ELEMENTS
+----------------------------------- */
 input, button {
   font-size: 1em;
   padding: 0.5em;
@@ -33,17 +47,26 @@ button:hover {
   background-color: #ffcc00;
 }
 
+/* -----------------------------------
+   RESULTS CONTAINER
+----------------------------------- */
 #result {
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 1em;
   margin-top: 1em;
   border-radius: 10px;
 }
 
+/* -----------------------------------
+   MOON PHASE DISPLAY
+----------------------------------- */
 .moon-emoji {
   font-size: 4em;
 }
 
+/* -----------------------------------
+   EVENT BLOCKS
+----------------------------------- */
 .event {
   text-align: left;
   margin: 1em auto;
@@ -53,8 +76,15 @@ button:hover {
   border-radius: 8px;
 }
 
-.event img {
+/* Text content of each event */
+.event-text {
+  margin-bottom: 0.5em;
+}
+
+/* Images in event blocks */
+.event-img img {
+  display: block;
+  margin: 0.5em auto 0;
   max-width: 100%;
   border-radius: 6px;
-  margin-top: 0.5em;
 }

@@ -1,7 +1,13 @@
-// --- Main Function (globally bound for button access)
+// --- Main Function (for Find Phase button)
+alert("script.js is running"); //debug
+
+
 window.showMoonPhase = async function showMoonPhase() {
   const dateInput = document.getElementById('moonDate').value;
   if (!dateInput) return;
+
+  // Show "Working…" message
+  document.getElementById('loadingMessage').style.display = 'block';
 
   const [year, month, day] = dateInput.split('-').map(Number);
   const date = new Date(Date.UTC(year, month - 1, day));
@@ -19,7 +25,12 @@ window.showMoonPhase = async function showMoonPhase() {
   let eventsHTML = "";
 
   if (eventMonth === 9 && eventDay === 11) {
-    eventsHTML += `<div class="event"><strong>🇺🇸 September 11, 2001:</strong> A day of remembrance for the U.S. <br><em>Never forget.</em></div>`;
+    eventsHTML += `
+      <div class="event">
+        <div class="event-text">
+          <strong>🇺🇸 September 11, 2001:</strong> A day of remembrance for the U.S. <br><em>Never forget.</em>
+        </div>
+      </div>`;
   }
 
   const seenDescriptions = new Set();
@@ -31,8 +42,10 @@ window.showMoonPhase = async function showMoonPhase() {
     const imageUrl = await fetchWikiImage(event.wikipedia[0]?.title || "");
     eventsHTML += `
       <div class="event">
-        <strong>${event.year}:</strong> ${event.description}
-        ${imageUrl ? `<img src="${imageUrl}" alt="Event image">` : ""}
+        <div class="event-text">
+          <strong>${event.year}:</strong> ${event.description}
+        </div>
+        ${imageUrl ? `<div class="event-img"><img src="${imageUrl}" alt="Event image"></div>` : ""}
       </div>
     `;
   }
@@ -42,9 +55,12 @@ window.showMoonPhase = async function showMoonPhase() {
     <img src="${phaseData.image}" alt="Moon phase" style="max-width:300px; border-radius: 8px;"><br><br>
     ${eventsHTML}
   `;
+
+  // Hide "Working…" message
+  document.getElementById('loadingMessage').style.display = 'none';
 };
 
-// --- Helper Functions
+// --- Helpers
 
 function toJulianDate(date) {
   return (date.getTime() / 86400000) + 2440587.5;
@@ -54,7 +70,7 @@ function getMoonPhaseData(phase) {
   const phases = [
     { max: 1.84566, name: "New Moon", image: "images/New Moon.jpg" },
     { max: 5.53699, name: "Waxing Crescent", image: "images/Waxing Crescent.jpg" },
-    { max: 9.22831, name: "First Quarter",  image: "images/First Quarter.jpg" },
+    { max: 9.22831, name: "First Quarter", image: "images/First Quarter.jpg" },
     { max: 12.91963, name: "Waxing Gibbous", image: "images/Waxing Gibbous.jpg" },
     { max: 16.61096, name: "Full Moon", image: "images/Full Moon.jpg" },
     { max: 20.30228, name: "Waning Gibbous", image: "images/Waning Gibbous.jpg" },
@@ -84,3 +100,7 @@ async function fetchWikiImage(title) {
     return null;
   }
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("findBtn");
+  btn.addEventListener("click", showMoonPhase);
+});
